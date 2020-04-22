@@ -1,5 +1,5 @@
-class SwiftyPods < Formula
-  desc "A tool to generate CocoaPods podfile's using Swift"
+class Swiftypods < Formula
+  desc "SwiftyPods is a command-line tool that allows you to generate your CocoaPods podfile using Swift"
   homepage "https://github.com/bitomule/SwiftyPods"
   url "https://github.com/bitomule/SwiftyPods.git",
       :tag => "0.1.0"
