@@ -13,14 +13,11 @@ class Kamui < Formula
     ldflags = %W[
       -s -w
       -X main.version=0.0.1
-      -X main.commit=196ce297600cee745a19873eae4433d0b531e503
+      -X main.commit=97f13a12f71fffda645e5791572c8b4329ca1c45
       -X main.date=#{time.iso8601}
     ]
     
     system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/kam"
-
-    # Generate shell completions if supported
-    generate_completions_from_executable(bin/"kam", "completion")
   end
 
   def caveats
