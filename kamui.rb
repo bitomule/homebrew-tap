@@ -2,7 +2,7 @@ class Kamui < Formula
   desc "🎯 Advanced session manager for Claude Code with automatic status line integration"
   homepage "https://github.com/bitomule/kamui"
   url "https://github.com/bitomule/kamui/archive/refs/tags/v0.0.1.tar.gz"
-  sha256 "d440b371f379d1140e8a5d882d7e7d28255a5de868a5ce50071fb0a1f213f2bc"
+  sha256 "7d2e543b09657f8255afea6721581e888df95c4bd00e03cdf19dc470155d003a"
   license "MIT"
   head "https://github.com/bitomule/kamui.git", branch: "main"
 
@@ -13,11 +13,11 @@ class Kamui < Formula
     ldflags = %W[
       -s -w
       -X main.version=0.0.1
-      -X main.commit=97f13a12f71fffda645e5791572c8b4329ca1c45
+      -X main.commit=6e5b926c697e3b8e8c1ffe05abeea1ab2ddc08e7
       -X main.date=#{time.iso8601}
     ]
     
-    system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/kam"
+    system "go", "build", *std_go_args(ldflags: ldflags, output: bin/"kam"), "./cmd/kam"
   end
 
   def caveats
