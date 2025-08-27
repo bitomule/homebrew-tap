@@ -13,7 +13,7 @@ class Kamui < Formula
     ldflags = %W[
       -s -w
       -X main.version=0.0.2
-      -X main.commit=18bce43ad1c8fb1e66480f0dbe66bae3f014dbd3
+      -X main.commit=07fc9c238e51ac0c6ec4ed7cff7d1b51dfd1ca10
       -X main.date=#{time.iso8601}
     ]
     
