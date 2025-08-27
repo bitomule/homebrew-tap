@@ -1,8 +1,8 @@
 class Koubou < Formula
   desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://github.com/bitomule/Koubou/archive/refs/tags/v0.0.1.tar.gz"
-  sha256 "012ee92e738a08b8ccebfa96adb51cb265a4d83ec9d356d5f88a4e01067d48f5"
+  url "https://github.com/bitomule/Koubou/archive/refs/tags/v0.0.2.tar.gz"
+  sha256 "e8850f4b03992f5e561aa8273d21c876b257b96ece42a16d45345cd929283936"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
