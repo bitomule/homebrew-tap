@@ -1,8 +1,8 @@
 class Kamui < Formula
   desc "🎯 Advanced session manager for Claude Code with automatic status line integration"
   homepage "https://github.com/bitomule/kamui"
-  url "https://github.com/bitomule/kamui/archive/refs/tags/v0.0.1.tar.gz"
-  sha256 "7d2e543b09657f8255afea6721581e888df95c4bd00e03cdf19dc470155d003a"
+  url "https://github.com/bitomule/kamui/archive/refs/tags/v0.0.2.tar.gz"
+  sha256 "368af6b7f729347eec7ef9f43f65a8b8db8779c8b5f4e8e9c837533699689187"
   license "MIT"
   head "https://github.com/bitomule/kamui.git", branch: "main"
 
@@ -12,8 +12,8 @@ class Kamui < Formula
     # Build from source with version info
     ldflags = %W[
       -s -w
-      -X main.version=0.0.1
-      -X main.commit=ee645d0d16027326e8ac9d3cf16ee8ef8a883e91
+      -X main.version=0.0.2
+      -X main.commit=18bce43ad1c8fb1e66480f0dbe66bae3f014dbd3
       -X main.date=#{time.iso8601}
     ]
     
