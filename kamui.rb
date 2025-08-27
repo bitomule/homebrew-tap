@@ -13,11 +13,11 @@ class Kamui < Formula
     ldflags = %W[
       -s -w
       -X main.version=0.0.1
-      -X main.commit=6e5b926c697e3b8e8c1ffe05abeea1ab2ddc08e7
+      -X main.commit=ee645d0d16027326e8ac9d3cf16ee8ef8a883e91
       -X main.date=#{time.iso8601}
     ]
     
-    system "go", "build", *std_go_args(ldflags: ldflags, output: bin/"kam"), "./cmd/kam"
+    system "go", "build", "-ldflags", ldflags.join(" "), "-o", bin/"kam", "./cmd/kam"
   end
 
   def caveats
