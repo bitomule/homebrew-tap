@@ -6,10 +6,7 @@ class Koubou < Formula
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
-  depends_on "python@3.9" => [:build, :test]
-  depends_on "python@3.10" => [:build, :test]
-  depends_on "python@3.11" => [:build, :test] 
-  depends_on "python@3.12" => [:build, :test]
+  depends_on "python@3.12"
 
   resource "click" do
     url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
@@ -47,8 +44,25 @@ class Koubou < Formula
   end
 
   def install
-    # Install with pip in isolated mode
-    system "python3", "-m", "pip", "install", "--no-deps", "--prefix=#{prefix}", "."
+    # Use virtualenv to avoid system conflicts
+    venv = libexec/"venv"
+    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
+    
+    # Install dependencies into virtualenv
+    system venv/"bin/pip", "install", "-v", "--no-deps", "--no-binary", ":all:",
+           resource("click").cached_download,
+           resource("pillow").cached_download,
+           resource("pydantic").cached_download,
+           resource("pydantic-core").cached_download,
+           resource("typer").cached_download,
+           resource("pyyaml").cached_download,
+           resource("rich").cached_download
+    
+    # Install koubou itself
+    system venv/"bin/pip", "install", "-v", "--no-deps", "."
+    
+    # Create wrapper script
+    (bin/"kou").write_env_script venv/"bin/kou", PATH: "#{venv}/bin:$PATH"
   end
 
   def caveats
