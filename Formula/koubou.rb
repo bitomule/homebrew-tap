@@ -1,8 +1,8 @@
 class Koubou < Formula
   desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/02/49/4d92719e0a23a13e16512bc12079040035f1d3f32fd0ca16ccdbab35ab94/koubou-0.1.4.tar.gz"
-  sha256 "a549e31736e002509e01b01b1e4deb7552f7c56e29e0b8dbe3101deca6010743"
+  url "https://files.pythonhosted.org/packages/1e/9f/b552eef12217ec6bc1dd04f3f463cab6a6a3d7bd9cc85b79d7cfb3f079c8/koubou-0.1.6.tar.gz"
+  sha256 "ea72297dcf5251a87d07ef15d60784e5a4c1fa3ad56e792fc942726e64b00964"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -81,7 +81,7 @@ class Koubou < Formula
 
   test do
     system "#{bin}/kou", "--version"
-    assert_match "🎯 Koubou v0.1.4", shell_output("#{bin}/kou --version")
+    assert_match "🎯 Koubou v0.1.6", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
 
     # Create a minimal test configuration
