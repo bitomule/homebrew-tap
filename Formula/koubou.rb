@@ -1,4 +1,6 @@
 class Koubou < Formula
+  include Language::Python::Virtualenv
+
   desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
   url "https://files.pythonhosted.org/packages/1e/9f/b552eef12217ec6bc1dd04f3f463cab6a6a3d7bd9cc85b79d7cfb3f079c8/koubou-0.1.6.tar.gz"
