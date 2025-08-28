@@ -52,8 +52,21 @@ class Koubou < Formula
   end
 
   def install
-    # Modern Homebrew Python formula pattern
-    virtualenv_install_with_resources
+    # Create virtualenv with pip support
+    virtualenv_create(libexec, "python3.12")
+    
+    # Install all resource dependencies first
+    resources.each do |r|
+      r.stage do
+        system libexec/"bin/pip", "install", "--no-deps", "--no-binary", ":all:", "."
+      end
+    end
+    
+    # Install koubou itself
+    system libexec/"bin/pip", "install", "--no-deps", "--no-binary", ":all:", "."
+    
+    # Create wrapper script
+    bin.install_symlink libexec/"bin/kou"
   end
 
   def caveats
