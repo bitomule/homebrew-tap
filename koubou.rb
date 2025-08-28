@@ -42,7 +42,7 @@ class Koubou < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/b8/0a/2d324f8cb40f51218ba3ad3d6567a90fcafa6d3f9d5b2ebb9b9e823d9ea8/rich-13.9.4.tar.gz"
+    url "https://files.pythonhosted.org/packages/ab/3a/0316b28d0761c6734d6bc14e770d85506c986c85ffb239e688eeaab2c2bc/rich-13.9.4.tar.gz"
     sha256 "439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098"
   end
 
