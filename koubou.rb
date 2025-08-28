@@ -24,8 +24,8 @@ class Koubou < Formula
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/a6/9f/7de1f19b6aea45aeb441838782d68352e71bfa98ee6fa048d5041991b33e/pydantic_core-2.27.1.tar.gz"
-    sha256 "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235"
+    url "https://files.pythonhosted.org/packages/17/19/ed6a078a5287aea7922de6841ef4c06157931622c89c2a47940837b5eecd/pydantic_core-2.33.1.tar.gz"
+    sha256 "bcc9c6fdb0ced789245b02b7d6603e17d1563064ddcfc36f046b61c0c05dd9df"
   end
 
   resource "typer" do
@@ -53,7 +53,7 @@ class Koubou < Formula
            "click==8.1.7",
            "pillow==10.4.0", 
            "pydantic==2.11.2",
-           "pydantic-core==2.27.1",
+           "pydantic-core==2.33.1",
            "typer==0.15.1",
            "PyYAML==6.0.1", 
            "rich==13.9.4"
