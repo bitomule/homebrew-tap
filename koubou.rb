@@ -48,15 +48,15 @@ class Koubou < Formula
     venv = libexec/"venv"
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
     
-    # Install dependencies into virtualenv
-    system venv/"bin/pip", "install", "-v", "--no-deps", "--no-binary", ":all:",
-           resource("click").cached_download,
-           resource("pillow").cached_download,
-           resource("pydantic").cached_download,
-           resource("pydantic-core").cached_download,
-           resource("typer").cached_download,
-           resource("pyyaml").cached_download,
-           resource("rich").cached_download
+    # Install dependencies into virtualenv from PyPI (allows binary wheels)
+    system venv/"bin/pip", "install", "-v", 
+           "click==8.1.7",
+           "pillow==10.4.0", 
+           "pydantic==2.11.2",
+           "pydantic-core==2.27.1",
+           "typer==0.15.1",
+           "PyYAML==6.0.1", 
+           "rich==13.9.4"
     
     # Install koubou itself
     system venv/"bin/pip", "install", "-v", "--no-deps", "."
