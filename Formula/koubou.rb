@@ -52,10 +52,10 @@ class Koubou < Formula
   end
 
   def install
-    # Create virtualenv with pip support
-    virtualenv_create(libexec, "python3.12")
+    # Create virtualenv and ensure pip is available
+    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
     
-    # Install all resource dependencies first
+    # Install all resource dependencies first  
     resources.each do |r|
       r.stage do
         system libexec/"bin/pip", "install", "--no-deps", "--no-binary", ":all:", "."
