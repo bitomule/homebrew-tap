@@ -32,7 +32,7 @@ class Koubou < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/cb/ce/dca7b219718afd37a0068f4f2530a727c8b3ed8bc77c18aa3a9bb4b7001e/typer-0.15.1.tar.gz"
+    url "https://files.pythonhosted.org/packages/cb/ce/dca7b219718afd37a0068f4f2530a727c2b74a8b6e8e0c0080a4c0de4fcd/typer-0.15.1.tar.gz"
     sha256 "a0588c0a7fa68a1978a069818657778f86abe6ff5ea6abf472f940a08bfe4f0a"
   end
 
