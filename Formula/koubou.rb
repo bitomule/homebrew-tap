@@ -55,14 +55,14 @@ class Koubou < Formula
     # Create virtualenv and ensure pip is available
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
     
-    # Install all resource dependencies first  
+    # Install all resource dependencies first (allow binary wheels)
     resources.each do |r|
       r.stage do
-        system libexec/"bin/pip", "install", "--no-deps", "--no-binary", ":all:", "."
+        system libexec/"bin/pip", "install", "--no-deps", "."
       end
     end
     
-    # Install koubou itself
+    # Install koubou itself (only build from source for the main package)
     system libexec/"bin/pip", "install", "--no-deps", "--no-binary", ":all:", "."
     
     # Create wrapper script
