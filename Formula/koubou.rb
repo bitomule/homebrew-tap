@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://github.com/bitomule/Koubou/archive/refs/tags/v0.4.4.tar.gz"
-  sha256 "33413c4298dd55d83380f96b0891d95eef44bac6b78b2c27bf5a78bdb188903c"
+  url "https://github.com/bitomule/Koubou/archive/refs/tags/v0.4.5.tar.gz"
+  sha256 "eb38b728ac3a4ea7159dff2526e7cb0223d0f00a49e8b2d0b0848239a26cc23e"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -48,7 +48,7 @@ class Koubou < Formula
 
   test do
     system "#{bin}/kou", "--version"
-    assert_match "🎯 Koubou v0.4.4", shell_output("#{bin}/kou --version")
+    assert_match "🎯 Koubou v0.4.5", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
 
     # Create a minimal test configuration
