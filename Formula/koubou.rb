@@ -48,7 +48,7 @@ class Koubou < Formula
 
   test do
     system "#{bin}/kou", "--version"
-    assert_match "🎯 Koubou v0.4.4")
+    assert_match "🎯 Koubou v0.4.4", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
 
     # Create a minimal test configuration
