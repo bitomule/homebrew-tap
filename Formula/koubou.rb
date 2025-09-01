@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/b0/ab/edd36bb7d4900bf3111e02d5611021e1fa02b88d5076580741b650c9536e/koubou-0.5.5.tar.gz"
-  sha256 "3e898e00015e21f4b8b712e15336c99fdffe90fd48999a0135b332e51fb83b1b"
+  url "https://files.pythonhosted.org/packages/d5/35/ba303776efab15aff290898f07000f26fdc28ce53e0ea4f32b46501bf149/koubou-0.5.6.tar.gz"
+  sha256 "2f8ca807074d46057d8f5b8de4186e3e4ba44c3866683c2507a172689354ddfc"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
