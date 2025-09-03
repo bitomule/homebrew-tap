@@ -87,7 +87,14 @@ class Koubou < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    # Create virtualenv and ensure pip is available
+    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
+    
+    # Install koubou from source, but allow binary wheels for dependencies (like Pillow)
+    system libexec/"bin/pip", "install", "--no-binary", "koubou", "."
+    
+    # Create wrapper script
+    bin.install_symlink libexec/"bin/kou"
   end
 
   def caveats
