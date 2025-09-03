@@ -1,13 +1,14 @@
 class Koubou < Formula
   include Language::Python::Virtualenv
 
-  desc "🎯 Koubou (工房) - The artisan workshop for App Store screenshots"
+  desc "Koubou - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/e6/51/d032d5b9a9f5f2ae4e00d45a6b4c7d9b20b114aee62d52cb0b7affb5a43d/koubou-0.6.0.tar.gz"
-  sha256 "72f326dbe064bd812b6bf008d2a5dd39ba635d487058ef45e6c2d2715b4f73b3"
+  url "https://files.pythonhosted.org/packages/a9/22/abd497813da43a67204c26e0c718f840e3911eb7538c87baaf518770e6f0/koubou-0.6.1.tar.gz"
+  sha256 "b8f652d490f430e5a40d862b7d4f6b0d4cdd79388e43fe0a76fc79f6cd02706b"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
+  depends_on "libyaml"
   depends_on "python@3.12"
 
   resource "annotated-types" do
@@ -86,36 +87,29 @@ class Koubou < Formula
   end
 
   def install
-    # Create virtualenv and ensure pip is available
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
-    
-    # Install koubou and let pip handle dependencies automatically (uses binary wheels)
-    system libexec/"bin/pip", "install", "--no-binary", "koubou", "."
-    
-    # Create wrapper script
-    bin.install_symlink libexec/"bin/kou"
+    virtualenv_install_with_resources
   end
 
   def caveats
     <<~EOS
-      🎯 Koubou (工房) is ready! 
+      Koubou is ready!
 
       Transform YAML into handcrafted App Store screenshots.
-      Your professional workshop where every screenshot 
+      Your professional workshop where every screenshot
       is carefully crafted with artisan quality.
 
       Quick start:
         kou create-config my-screenshots.yaml    # Create sample config
-        kou generate my-screenshots.yaml         # Generate screenshots  
+        kou generate my-screenshots.yaml         # Generate screenshots
         kou list-frames                          # List available device frames
         kou --help                               # Show all commands
 
       Features:
-        🎨 100+ Device Frames: iPhone, iPad, Mac, Watch
-        🌈 Professional Backgrounds: Linear, radial, conic gradients
-        ✨ Rich Typography: Advanced text overlays with stroke
-        📱 YAML Configuration: Elegant, declarative definitions
-        🚀 Batch Processing: Generate multiple screenshots efficiently
+        - 100+ Device Frames: iPhone, iPad, Mac, Watch
+        - Professional Backgrounds: Linear, radial, conic gradients
+        - Rich Typography: Advanced text overlays with stroke
+        - YAML Configuration: Elegant, declarative definitions
+        - Batch Processing: Generate multiple screenshots efficiently
 
       Documentation: https://github.com/bitomule/koubou
     EOS
@@ -123,7 +117,7 @@ class Koubou < Formula
 
   test do
     system "#{bin}/kou", "--version"
-    assert_match "🎯 Koubou v0.4.6", shell_output("#{bin}/kou --version")
+    assert_match "Koubou v0.6.1", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
 
     # Create a minimal test configuration
@@ -133,7 +127,7 @@ class Koubou < Formula
         output_dir: "./output"
       devices: ["iPhone 15 Pro Portrait"]
       screenshots:
-        - name: "Test Screenshot"
+        test:
           content:
             - type: "text"
               content: "Hello World"
@@ -142,6 +136,6 @@ class Koubou < Formula
 
     # Test configuration validation (should not crash)
     system "#{bin}/kou", "create-config", "sample.yaml", "--name", "Test"
-    assert_predicate testpath/"sample.yaml", :exist?
+    assert_path_exists testpath/"sample.yaml"
   end
 end
