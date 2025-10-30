@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "Koubou - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/38/3e/c81bc2dc6bf384ec826142d4d908a3800ae04c30f3ec1f121d2b40f24f49/koubou-0.8.3.tar.gz"
-  sha256 "bf42c9b2cc4fa1982aee817a73f110617ebee65b083ac023eeac0b3bb365d859"
+  url "https://files.pythonhosted.org/packages/8a/b2/973c8286ab04c11f0c2d1ad1320ad19d39d8800d93e20772f38a3612bacb/koubou-0.8.4.tar.gz"
+  sha256 "6f728ec26510c578233a183ad79c1da16eab508b793da6e11791636cd034c29c"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -37,8 +37,8 @@ class Koubou < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/4a/9b/e301418629f7bfdf72db9e80ad6ed9d1b83c487c471803eaa6464c511a01/cryptography-46.0.2.tar.gz"
-    sha256 "21b6fc8c71a3f9a604f028a329e5560009cc4a3a828bfea5fcba8eb7647d88fe"
+    url "https://files.pythonhosted.org/packages/9f/33/c00162f49c0e2fe8064a62cb92b93e50c74a72bc370ab92f86112b33ff62/cryptography-46.0.3.tar.gz"
+    sha256 "a8b17438104fed022ce745b362294d9ce35b4c2e45c1d958ad4a4b019285f4a1"
   end
 
   resource "h11" do
@@ -57,8 +57,8 @@ class Koubou < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/f1/70/7703c29685631f5a7590aa73f1f1d3fa9a380e654b86af429e0934a32f7d/idna-3.10.tar.gz"
-    sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
+    url "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
+    sha256 "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
   end
 
   resource "markdown-it-py" do
@@ -72,8 +72,8 @@ class Koubou < Formula
   end
 
   resource "pillow" do
-    url "https://files.pythonhosted.org/packages/f3/0d/d0d6dea55cd152ce3d6767bb38a8fc10e33796ba4ba210cbab9354b6d238/pillow-11.3.0.tar.gz"
-    sha256 "3828ee7586cd0b2091b6209e5ad53e20d0649bbe87164a459d0676e035e8f523"
+    url "https://files.pythonhosted.org/packages/5a/b0/cace85a1b0c9775a9f8f5d5423c8261c858760e2466c79b2dd184638b056/pillow-12.0.0.tar.gz"
+    sha256 "87d4f8125c9988bfbed67af47dd7a953e2fc7b0cc1e7800ec6d2080d490bb353"
   end
 
   resource "pycparser" do
@@ -82,13 +82,13 @@ class Koubou < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/c3/da/b8a7ee04378a53f6fefefc0c5e05570a3ebfdfa0523a878bcd3b475683ee/pydantic-2.12.0.tar.gz"
-    sha256 "c1a077e6270dbfb37bfd8b498b3981e2bb18f68103720e51fa6c306a5a9af563"
+    url "https://files.pythonhosted.org/packages/f3/1e/4f0a3233767010308f2fd6bd0814597e3f63f1dc98304a9112b8759df4ff/pydantic-2.12.3.tar.gz"
+    sha256 "1da1c82b0fc140bb0103bc1441ffe062154c8d38491189751ee00fd8ca65ce74"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/7d/14/12b4a0d2b0b10d8e1d9a24ad94e7bbb43335eaf29c0c4e57860e8a30734a/pydantic_core-2.41.1.tar.gz"
-    sha256 "1ad375859a6d8c356b7704ec0f547a58e82ee80bb41baa811ad710e124bc8f2f"
+    url "https://files.pythonhosted.org/packages/df/18/d0944e8eaaa3efd0a91b0f1fc537d3be55ad35091b6a87638211ba691964/pydantic_core-2.41.4.tar.gz"
+    sha256 "70e47929a9d4a1905a67e4b687d5946026390568a8e952b92824118063cee4d5"
   end
 
   resource "pygments" do
@@ -122,8 +122,8 @@ class Koubou < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/21/ca/950278884e2ca20547ff3eb109478c6baf6b8cf219318e6bc4f666fad8e8/typer-0.19.2.tar.gz"
-    sha256 "9ad824308ded0ad06cc716434705f691d4ee0bfd0fb081839d2e426860e7fdca"
+    url "https://files.pythonhosted.org/packages/8f/28/7c85c8032b91dbe79725b6f17d2fffc595dff06a35c7a30a37bef73a1ab4/typer-0.20.0.tar.gz"
+    sha256 "1aaf6494031793e4876fb0bacfa6a912b551cf43c1e63c800df8b1a866720c37"
   end
 
   resource "typing-extensions" do
