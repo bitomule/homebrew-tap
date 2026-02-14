@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "Koubou - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/aa/1c/3d3bb8e71406dccb8b1b66efd2ae98eb19ae05e97ca8d9df1e5cd3ab84ee/koubou-0.11.1.tar.gz"
-  sha256 "e30228739a5d694ceb3fdc65643394bca55ed6d74f364b8bac4ab54a0b74d719"
+  url "https://files.pythonhosted.org/packages/d2/22/51bf5a95f515fc3ade3049b6eae6a30e733dfe623d676fa7a157000e0e63/koubou-0.12.0.tar.gz"
+  sha256 "a3b11314c65744111121e6023f32f9507717429b418be3c3c8624ef2a92eb24a"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -72,8 +72,8 @@ class Koubou < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/7e/e6/44e073787aa57cd71c151f44855232feb0f748428fd5242d7366e3c4ae8b/typer-0.23.0.tar.gz"
-    sha256 "d8378833e47ada5d3d093fa20c4c63427cc4e27127f6b349a6c359463087d8cc"
+    url "https://files.pythonhosted.org/packages/fd/07/b822e1b307d40e263e8253d2384cf98c51aa2368cc7ba9a07e523a1d964b/typer-0.23.1.tar.gz"
+    sha256 "2070374e4d31c83e7b61362fd859aa683576432fd5b026b060ad6b4cd3b86134"
   end
 
   resource "typing-extensions" do
