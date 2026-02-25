@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "Koubou - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/f1/a4/abae474ff203e88b7bcacbaf582e5c3520f5de2336eb608e2de9ac37127b/koubou-0.13.0.tar.gz"
-  sha256 "1149c444514cac9d0fbaa40c4aefca617adf7f91a7c9a2de4d29cc530147c979"
+  url "https://files.pythonhosted.org/packages/31/bc/3ddb71def12f057424d6e8f1b7deeb37cec7d45175fb163b60d26eb30979/koubou-0.14.0.tar.gz"
+  sha256 "c61ece3c7201d357bda028fb8293e549ca73c9d712fa15c6f3462d3398424e38"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -62,8 +62,8 @@ class Koubou < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/74/99/a4cab2acbb884f80e558b0771e97e21e939c5dfb460f488d19df485e8298/rich-14.3.2.tar.gz"
-    sha256 "e712f11c1a562a11843306f5ed999475f09ac31ffb64281f73ab29ffdda8b3b8"
+    url "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz"
+    sha256 "b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b"
   end
 
   resource "shellingham" do
@@ -72,8 +72,8 @@ class Koubou < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/fd/07/b822e1b307d40e263e8253d2384cf98c51aa2368cc7ba9a07e523a1d964b/typer-0.23.1.tar.gz"
-    sha256 "2070374e4d31c83e7b61362fd859aa683576432fd5b026b060ad6b4cd3b86134"
+    url "https://files.pythonhosted.org/packages/f5/24/cb09efec5cc954f7f9b930bf8279447d24618bb6758d4f6adf2574c41780/typer-0.24.1.tar.gz"
+    sha256 "e39b4732d65fbdcde189ae76cf7cd48aeae72919dea1fdfc16593be016256b45"
   end
 
   resource "typing-extensions" do
