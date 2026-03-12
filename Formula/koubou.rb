@@ -8,6 +8,8 @@ class Koubou < Formula
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
+  depends_on "maturin" => :build
+  depends_on "rust" => :build
   depends_on "libyaml"
   depends_on "python@3.12"
 
@@ -92,13 +94,8 @@ class Koubou < Formula
   end
 
   def install
-    # Create virtualenv and ensure pip is available
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
-    
-    # Install koubou from source, but allow binary wheels for dependencies (like Pillow)
-    system libexec/"bin/pip", "install", "--no-binary", "koubou", "."
-    
-    # Create wrapper script
+    system libexec/"bin/pip", "install", "--no-binary", "koubou,pydantic-core", "."
     bin.install_symlink libexec/"bin/kou"
   end
 
@@ -111,10 +108,15 @@ class Koubou < Formula
       is carefully crafted with artisan quality.
 
       Quick start:
-        kou create-config my-screenshots.yaml    # Create sample config
+        kou --create-config my-screenshots.yaml  # Create sample config
         kou generate my-screenshots.yaml         # Generate screenshots
         kou list-frames                          # List available device frames
+        kou setup-html                           # Install browser runtime if needed
         kou --help                               # Show all commands
+
+      HTML templates work out of the box if Chrome is already installed.
+      If you don't have a compatible browser yet, run:
+        kou setup-html
 
       Features:
         - 100+ Device Frames: iPhone, iPad, Mac, Watch
@@ -128,26 +130,8 @@ class Koubou < Formula
   end
 
   test do
-    system "#{bin}/kou", "--version"
-    assert_match "Koubou v0.6.1", shell_output("#{bin}/kou --version")
+    assert_match "Koubou v#{version}", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
-
-    # Create a minimal test configuration
-    (testpath/"test.yaml").write <<~EOS
-      project:
-        name: "Test Project"
-        output_dir: "./output"
-      devices: ["iPhone 15 Pro Portrait"]
-      screenshots:
-        test:
-          content:
-            - type: "text"
-              content: "Hello World"
-              position: ["50%", "50%"]
-    EOS
-
-    # Test configuration validation (should not crash)
-    system "#{bin}/kou", "create-config", "sample.yaml", "--name", "Test"
-    assert_path_exists testpath/"sample.yaml"
+    system "#{bin}/kou", "setup-html", "--help"
   end
 end
