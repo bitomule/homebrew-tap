@@ -3,8 +3,8 @@ class Koubou < Formula
 
   desc "Koubou - The artisan workshop for App Store screenshots"
   homepage "https://github.com/bitomule/koubou"
-  url "https://files.pythonhosted.org/packages/19/55/c3975348bc58f887ebac4ac942d87fe45b8439e1e18a8c88f738bc0061e1/koubou-0.15.0.tar.gz"
-  sha256 "4271eb119f8a695e7ae98fdb5595e6a667ac9e80bbac06b259bc46e80324a261"
+  url "https://files.pythonhosted.org/packages/01/74/58f9b2035d7076e9e5d90202d4e156a472af9328a10e16c308da34a329a8/koubou-0.15.1.tar.gz"
+  sha256 "d9922877d10516fc1f0d503187af7fca32bfe8715dac7aaf37db7e60a47490fd"
   license "MIT"
   head "https://github.com/bitomule/koubou.git", branch: "main"
 
@@ -26,6 +26,11 @@ class Koubou < Formula
     sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
   end
 
+  resource "greenlet" do
+    url "https://files.pythonhosted.org/packages/a3/51/1664f6b78fc6ebbd98019a1fd730e83fa78f2db7058f72b1463d3612b8db/greenlet-3.3.2.tar.gz"
+    sha256 "2eaf067fc6d886931c7962e8c6bede15d2f01965560f3359b27c80bde2d151f2"
+  end
+
   resource "markdown-it-py" do
     url "https://files.pythonhosted.org/packages/5b/f5/4ec618ed16cc4f8fb3b701563655a69816155e79e24a17b651541804721d/markdown_it_py-4.0.0.tar.gz"
     sha256 "cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3"
@@ -41,6 +46,20 @@ class Koubou < Formula
     sha256 "9ad8fa5937ab05218e2b6a4cff30295ad35afd2f83ac592e68c0d871bb0fdbc4"
   end
 
+  on_macos do
+    resource "playwright" do
+      url "https://files.pythonhosted.org/packages/e1/ee/3ce6209c9c74a650aac9028c621f357a34ea5cd4d950700f8e2c4b7fe2c4/playwright-1.58.0-py3-none-macosx_11_0_universal2.whl"
+      sha256 "185e0132578733d02802dfddfbbc35f42be23a45ff49ccae5081f25952238117"
+    end
+  end
+
+  on_linux do
+    resource "playwright" do
+      url "https://files.pythonhosted.org/packages/f1/af/009958cbf23fac551a940d34e3206e6c7eed2b8c940d0c3afd1feb0b0589/playwright-1.58.0-py3-none-manylinux1_x86_64.whl"
+      sha256 "c95568ba1eda83812598c1dc9be60b4406dffd60b149bc1536180ad108723d6b"
+    end
+  end
+
   resource "pydantic" do
     url "https://files.pythonhosted.org/packages/69/44/36f1a6e523abc58ae5f928898e4aca2e0ea509b5aa6f6f392a5d882be928/pydantic-2.12.5.tar.gz"
     sha256 "4d351024c75c0f085a9febbb665ce8c0c6ec5d30e903bdb6394b7ede26aebb49"
@@ -49,6 +68,11 @@ class Koubou < Formula
   resource "pydantic-core" do
     url "https://files.pythonhosted.org/packages/71/70/23b021c950c2addd24ec408e9ab05d59b035b39d97cdc1130e1bce647bb6/pydantic_core-2.41.5.tar.gz"
     sha256 "08daa51ea16ad373ffd5e7606252cc32f07bc72b28284b6bc9c6df804816476e"
+  end
+
+  resource "pyee" do
+    url "https://files.pythonhosted.org/packages/8b/04/e7c1fe4dc78a6fdbfd6c337b1c3732ff543b8a397683ab38378447baa331/pyee-13.0.1.tar.gz"
+    sha256 "0b931f7c14535667ed4c7e0d531716368715e860b988770fc7eb8578d1f67fc8"
   end
 
   resource "pygments" do
@@ -92,14 +116,7 @@ class Koubou < Formula
   end
 
   def install
-    # Create virtualenv and ensure pip is available
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
-    
-    # Install koubou from source, but allow binary wheels for dependencies (like Pillow)
-    system libexec/"bin/pip", "install", "--no-binary", "koubou", "."
-    
-    # Create wrapper script
-    bin.install_symlink libexec/"bin/kou"
+    virtualenv_install_with_resources
   end
 
   def caveats
@@ -111,43 +128,26 @@ class Koubou < Formula
       is carefully crafted with artisan quality.
 
       Quick start:
-        kou create-config my-screenshots.yaml    # Create sample config
+        kou --create-config my-screenshots.yaml  # Create sample config
         kou generate my-screenshots.yaml         # Generate screenshots
         kou list-frames                          # List available device frames
         kou --help                               # Show all commands
 
-      Features:
-        - 100+ Device Frames: iPhone, iPad, Mac, Watch
-        - Professional Backgrounds: Linear, radial, conic gradients
-        - Rich Typography: Advanced text overlays with stroke
-        - YAML Configuration: Elegant, declarative definitions
-        - Batch Processing: Generate multiple screenshots efficiently
+      HTML templates:
+        - If Google Chrome is already installed, HTML rendering should work immediately.
+        - Otherwise run: kou setup-html
+        - You can also run: kou generate config.yaml --setup-html
 
       Documentation: https://github.com/bitomule/koubou
     EOS
   end
 
   test do
-    system "#{bin}/kou", "--version"
-    assert_match "Koubou v0.6.1", shell_output("#{bin}/kou --version")
-    system "#{bin}/kou", "--help"
+    assert_match "Koubou v0.15.1", shell_output("#{bin}/kou --version")
+    assert_match "setup-html", shell_output("#{bin}/kou --help")
+    assert_match "Prepare HTML rendering support", shell_output("#{bin}/kou setup-html --help")
 
-    # Create a minimal test configuration
-    (testpath/"test.yaml").write <<~EOS
-      project:
-        name: "Test Project"
-        output_dir: "./output"
-      devices: ["iPhone 15 Pro Portrait"]
-      screenshots:
-        test:
-          content:
-            - type: "text"
-              content: "Hello World"
-              position: ["50%", "50%"]
-    EOS
-
-    # Test configuration validation (should not crash)
-    system "#{bin}/kou", "create-config", "sample.yaml", "--name", "Test"
+    system "#{bin}/kou", "--create-config", "sample.yaml", "--name", "Test", "--force"
     assert_path_exists testpath/"sample.yaml"
   end
 end
