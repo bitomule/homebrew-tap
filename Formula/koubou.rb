@@ -97,6 +97,9 @@ class Koubou < Formula
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
     system libexec/"bin/pip", "install", "--no-binary", "koubou,pydantic-core", "."
     bin.install_symlink libexec/"bin/kou"
+
+    # Download and install device frames into the package
+    system libexec/"bin/kou", "setup-frames"
   end
 
   def caveats
@@ -113,6 +116,10 @@ class Koubou < Formula
         kou list-frames                          # List available device frames
         kou setup-html                           # Install browser runtime if needed
         kou --help                               # Show all commands
+
+      Device frames are downloaded during install and cached locally.
+      To re-download or update frames, run:
+        kou setup-frames
 
       HTML templates work out of the box if Chrome is already installed.
       If you don't have a compatible browser yet, run:
@@ -133,5 +140,6 @@ class Koubou < Formula
     assert_match "Koubou v#{version}", shell_output("#{bin}/kou --version")
     system "#{bin}/kou", "--help"
     system "#{bin}/kou", "setup-html", "--help"
+    system "#{bin}/kou", "setup-frames", "--help"
   end
 end
