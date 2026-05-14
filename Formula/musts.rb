@@ -1,29 +1,31 @@
 class Musts < Formula
   desc "Agent-first validation loop CLI."
   homepage "https://github.com/bitomule/musts"
-  version "0.1.1"
-  if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/bitomule/musts/releases/download/musts-v0.1.1/musts-aarch64-apple-darwin.tar.xz"
-    sha256 "bacf303f7d7603a87a8990c1b8047142ff9a67ac0b5aabf69530a8e49644d7fb"
+  version "0.1.3"
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.3/musts-aarch64-apple-darwin.tar.xz"
+      sha256 "df56da644b7d80d6cae6e14f19b5d326af5b1944d38356f97108e108f8d84e09"
+    end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.1/musts-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "e7b41dfe00ee65eef42c16a95ef443e987e40d8d6bee9f1d23c5c309c1fe827b"
+      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.3/musts-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "60315a0ba6da1217dcddc540a4aa0c5207cf1052625f8e009dc0f0ac2eaa7197"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.1/musts-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "76f7dc2e0f4a723f369f5c3832465435431f7b9378828dc119e4835414f9dd9f"
+      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.3/musts-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "cc3d38ff228a841daabce844651bee27afacddd73e7bcd8d16d55abd96c52f3d"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":      {},
+    "aarch64-apple-darwin": {},
     "aarch64-unknown-linux-gnu": {},
-    "x86_64-pc-windows-gnu":     {},
-    "x86_64-unknown-linux-gnu":  {},
-  }.freeze
+    "x86_64-pc-windows-gnu": {},
+    "x86_64-unknown-linux-gnu": {}
+  }
 
   def target_triple
     cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
@@ -41,9 +43,15 @@ class Musts < Formula
   end
 
   def install
-    bin.install "musts" if OS.mac? && Hardware::CPU.arm?
-    bin.install "musts" if OS.linux? && Hardware::CPU.arm?
-    bin.install "musts" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "musts"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "musts"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "musts"
+    end
 
     install_binary_aliases!
 
