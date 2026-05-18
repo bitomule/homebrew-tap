@@ -11,7 +11,7 @@ class Koubou < Formula
   depends_on "maturin" => :build
   depends_on "rust" => :build
   depends_on "libyaml"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
 
   resource "annotated-doc" do
     url "https://files.pythonhosted.org/packages/57/ba/046ceea27344560984e26a590f90bc7f4a75b06701f653222458922b558c/annotated_doc-0.0.4.tar.gz"
@@ -94,7 +94,7 @@ class Koubou < Formula
   end
 
   def install
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", libexec
+    system Formula["python@3.13"].opt_bin/"python3.13", "-m", "venv", libexec
     system libexec/"bin/pip", "install", "--no-binary", "koubou,pydantic-core", "."
     bin.install_symlink libexec/"bin/kou"
 
