@@ -1,19 +1,19 @@
 class Musts < Formula
   desc "Agent-first validation loop CLI."
   homepage "https://github.com/bitomule/musts"
-  version "0.1.8"
+  version "0.1.9"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/bitomule/musts/releases/download/musts-v0.1.8/musts-aarch64-apple-darwin.tar.xz"
-    sha256 "47c6e4378a9d166509d54b3b0f1511276e80cadbb2196ca210cb21a7510d9b94"
+    url "https://github.com/bitomule/musts/releases/download/musts-v0.1.9/musts-aarch64-apple-darwin.tar.xz"
+    sha256 "b332da2b39295b4a124ea5cad15166b145eff6f37b02817a091e6ccad757a5df"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.8/musts-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "cfc57f7b03b6ede7febbe31d257a518fac6df9bbd98f08a4a58e04afb2bea87b"
+      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.9/musts-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "05d36f5706b4b15aacd7583f404ea4f59bfee9a743bbc368215e80378771b0aa"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.8/musts-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "73ac93b2847d3825725003ec02caef8168fe9608c21c80d0ee9554451c5903a7"
+      url "https://github.com/bitomule/musts/releases/download/musts-v0.1.9/musts-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "af088e8b5855a1e575c65612e88f1595ccb0723a6cfa66a7ebd1fd45dfed418c"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
