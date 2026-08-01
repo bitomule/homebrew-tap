@@ -1,15 +1,15 @@
 class Simpool < Formula
   desc "iOS simulator pool broker with flock-guarded slots"
   homepage "https://github.com/bitomule/simpool"
-  version "0.4.0"
+  version "0.5.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-arm64"
-      sha256 "dac3975603f29035ebfa764184e743c5c1fe4142a4742f5cda5505462add5a7b"
+      sha256 "39685846109dcda62d8162a28952777bd46e48f6d2fbac49fd79733fca59baf1"
     else
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-amd64"
-      sha256 "4b0986e31bec21c10f473f2541016e5e45320f9ffddf14c047e000457b5723c7"
+      sha256 "6110ac09db97bca8a43381d85da06d356c2177390552456ef451357be81adab0"
     end
   end
 
@@ -19,6 +19,6 @@ class Simpool < Formula
   end
 
   test do
-    assert_match "SLOT", shell_output("#{bin}/simpool status")
+    assert_match "simpool", shell_output("#{bin}/simpool status 2>&1", 0)
   end
 end
