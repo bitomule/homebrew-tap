@@ -1,15 +1,15 @@
 class Simpool < Formula
   desc "iOS simulator pool broker with flock-guarded slots"
   homepage "https://github.com/bitomule/simpool"
-  version "0.17.0"
+  version "0.18.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-arm64"
-      sha256 "0c275df832ba916b11cbb548f3b681822c44b8a21d6ded195194147f4da0ee7d"
+      sha256 "ac51b945070e27c4af475599b6df5bbe49e87e3d1f9db97c7aeb6cfff08eea36"
     else
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-amd64"
-      sha256 "f39f12336685a879d3d28657c4eda204c72b1947ecf121c2eabf38cd6591ae01"
+      sha256 "5902bfa7548ada4718ec733ea4d76b3ccc2ec55c0a7090ed8aed4284d1173368"
     end
   end
 
@@ -45,5 +45,10 @@ class Simpool < Formula
 
   test do
     assert_match "simpool", shell_output("#{bin}/simpool status 2>&1", 0)
+    # Not just that it runs: that the binary Homebrew installed
+    # reports the version Homebrew thinks it installed. An
+    # unstamped build says "dev", which would fail here rather
+    # than shipping a copy that cannot identify itself.
+    assert_equal "v#{version}", shell_output("#{bin}/simpool version --short").strip
   end
 end
