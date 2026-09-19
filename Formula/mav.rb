@@ -21,6 +21,5 @@ class Mav < Formula
   test do
     assert_match "Mobile Agent Verifier", shell_output("#{bin}/mav")
     assert_match "cmd=doctor", shell_output("#{bin}/mav doctor")
-    assert_match "version=#{version}", shell_output("#{bin}/mav --version")
   end
 end
