@@ -1,15 +1,15 @@
 class Mav < Formula
   desc "Mobile Agent Verifier for iOS apps"
   homepage "https://github.com/bitomule/mav"
-  version "0.20.0"
+  version "0.21.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/mav/releases/download/v#{version}/mav-darwin-arm64"
-      sha256 "318ec164cc87e9c0b3d9248ac7fb5fca9f92a62f5e265247b4f032f3ec5c6324"
+      sha256 "37f56b9ff974e6893b5732996b1bb5450bee07356a61650217f843a759a8f151"
     else
       url "https://github.com/bitomule/mav/releases/download/v#{version}/mav-darwin-amd64"
-      sha256 "8b988917fd4bec14f1d071c94cc86de1ac62366787c7e8260890ef3065e7cb3b"
+      sha256 "560bb20206858be39417eb244d5565008272fdbf5e2dac4c0078935b4f4aa667"
     end
   end
 
@@ -21,5 +21,6 @@ class Mav < Formula
   test do
     assert_match "Mobile Agent Verifier", shell_output("#{bin}/mav")
     assert_match "cmd=doctor", shell_output("#{bin}/mav doctor")
+    assert_match "version=#{version}", shell_output("#{bin}/mav --version")
   end
 end
