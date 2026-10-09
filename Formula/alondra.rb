@@ -1,16 +1,18 @@
 class Alondra < Formula
   desc "Private task and notification bridge for Claude"
   homepage "https://davidcollado.dev"
-  version "0.2.60"
+  version "0.2.61"
 
   depends_on macos: :sonoma
   depends_on arch: :arm64
+  depends_on "tmux"
+  depends_on "tuicr"
 
   # Signed bytes must survive Homebrew cleaning unchanged.
   skip_clean "bin/alondra", "bin/alondrad"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "373b28a69e52bda8bc87f3e3e1f431a24c1986b7dc83e979f1556635933b7dfa"
+  sha256 "370402eb3722d5fd6cf3c07b8ae394b23472940e8fabc93f18627ba3fbe893a7"
 
   def install
     bin.install "alondra", "alondrad"
@@ -19,8 +21,7 @@ class Alondra < Formula
 
   def caveats
     <<~EOS
-      Run `alondra setup` to sign in, install the Claude plugins, and start the daemon.
-      Run it again after `brew upgrade alondra` to restart the daemon on the new version.
+      Run `alondra` to set up this Mac and open Alondra.
     EOS
   end
 
