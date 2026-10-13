@@ -1,9 +1,9 @@
 class Bazelqueue < Formula
   desc "Queue Bazel invocations until machine capacity is available"
   homepage "https://github.com/bitomule/bazelqueue"
-  url "https://github.com/bitomule/bazelqueue/releases/download/v0.1.1/bazelqueue-aarch64-apple-darwin.tar.xz"
-  version "0.1.1"
-  sha256 "0f87096ee22566782b8b5bebacea63fbc702732a8b7cb32bdda111398d5f53c6"
+  url "https://github.com/bitomule/bazelqueue/releases/download/v0.1.3/bazelqueue-aarch64-apple-darwin.tar.xz"
+  version "0.1.3"
+  sha256 "ad3b6892d3fc629d4d60dabdca2cce3ab09d0731ef9f60b146f7d4f839d3b828"
   license any_of: ["MIT", "Apache-2.0"]
 
   depends_on arch: :arm64
