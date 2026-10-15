@@ -1,7 +1,7 @@
 class Alondra < Formula
   desc "Private task and notification bridge for Claude"
   homepage "https://davidcollado.dev"
-  version "0.2.81"
+  version "0.2.82"
 
   depends_on macos: :sonoma
   depends_on arch: :arm64
@@ -12,7 +12,7 @@ class Alondra < Formula
   skip_clean "bin/alondra", "bin/alondrad", "bin/alondrad-launcher"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "af8e81d19d487341d82be449dfe5c6dff7ec8e29e4b61d7e702edb783c286efa"
+  sha256 "1cfed5a0c055528096ab49af7887fbaff4ef9741635ebec1d50f1cf3317202b1"
 
   def install
     bin.install "alondra", "alondrad", "alondrad-launcher"
