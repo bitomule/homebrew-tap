@@ -1,7 +1,7 @@
 class Alondra < Formula
   desc "Private task and notification bridge for Claude"
   homepage "https://davidcollado.dev"
-  version "0.2.80"
+  version "0.2.81"
 
   depends_on macos: :sonoma
   depends_on arch: :arm64
@@ -9,13 +9,13 @@ class Alondra < Formula
   depends_on "tuicr"
 
   # Signed bytes must survive Homebrew cleaning unchanged.
-  skip_clean "bin/alondra", "bin/alondrad"
+  skip_clean "bin/alondra", "bin/alondrad", "bin/alondrad-launcher"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "e665a1376a84468a57675ad7f40a404e406179ce7457e41315e36428a5b47c40"
+  sha256 "af8e81d19d487341d82be449dfe5c6dff7ec8e29e4b61d7e702edb783c286efa"
 
   def install
-    bin.install "alondra", "alondrad"
+    bin.install "alondra", "alondrad", "alondrad-launcher"
     (libexec/"alondra").install ".claude-plugin", "plugin", "plugin-orchestrator"
   end
 
