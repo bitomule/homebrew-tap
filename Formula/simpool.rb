@@ -1,15 +1,15 @@
 class Simpool < Formula
   desc "iOS simulator pool broker with flock-guarded slots"
   homepage "https://github.com/bitomule/simpool"
-  version "0.33.0"
+  version "0.34.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-arm64"
-      sha256 "8cb5b4c822687ba5c07b65694a123e4c665787adc95b60d5221ace98900ae2e9"
+      sha256 "62835a552602713a52d4c7644c231192b6bf55818e74d9ed46be4f3579523566"
     else
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-amd64"
-      sha256 "5d23b59d81ba2270854467914e843051ae21e687e1f0357a02a51eb846169765"
+      sha256 "706bea839c073c74ff4166609a31e3ed45c4cd1f55a2993335d342edc25a21f0"
     end
   end
 
@@ -31,14 +31,22 @@ class Simpool < Formula
   # schedule precisely because it destroys nothing a slot cannot
   # regenerate, which is what separates it from --purge.
   #
+  # Every minute, --cold 5m shuts down a free simulator five
+  # minutes after its last use: each one booted holds ~1 GB of
+  # memory, and a cold boot costs ~12s on the next lease. The rest
+  # of reap (--max, --scrub, orphaned runtimes, ghosts) takes ~25s
+  # and runs only every 30 minutes (--full-every); a minute's pass
+  # without it takes 0.3s. No --warm: keeping a simulator booted
+  # per group costs a gigabyte each to save those 12s.
+  #
   # Shipped as a Homebrew service rather than a plist simpool writes
   # itself: installing something that starts on login is the user's
   # decision, made explicitly with "brew services start simpool",
   # never a side effect of installing a binary.
   service do
-    run [opt_bin/"simpool", "reap", "--purge-orphan-runtimes", "--cold", "60", "--warm", "2", "--scrub", "120"]
+    run [opt_bin/"simpool", "reap", "--purge-orphan-runtimes", "--cold", "5m", "--full-every", "30m", "--scrub", "120"]
     run_type :interval
-    interval 1800
+    interval 60
     log_path "/tmp/simpool-reap.log"
     error_log_path "/tmp/simpool-reap.log"
   end
