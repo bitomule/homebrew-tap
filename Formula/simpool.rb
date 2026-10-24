@@ -1,15 +1,15 @@
 class Simpool < Formula
   desc "iOS simulator pool broker with flock-guarded slots"
   homepage "https://github.com/bitomule/simpool"
-  version "0.34.0"
+  version "0.35.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-arm64"
-      sha256 "62835a552602713a52d4c7644c231192b6bf55818e74d9ed46be4f3579523566"
+      sha256 "c55fbeda49955cf9c1911be4477848c66156496a9e4abc74edd2da30af5f0d8a"
     else
       url "https://github.com/bitomule/simpool/releases/download/v#{version}/simpool-darwin-amd64"
-      sha256 "706bea839c073c74ff4166609a31e3ed45c4cd1f55a2993335d342edc25a21f0"
+      sha256 "f7271ac3a7f334e120da626d4ee3f22f397bac6a7c9d9bf0f859e5c75bad94b8"
     end
   end
 
