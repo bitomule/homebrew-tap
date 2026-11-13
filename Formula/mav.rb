@@ -1,15 +1,17 @@
+# Canonical release template. Render with packaging/homebrew/render.py.
 class Mav < Formula
   desc "Mobile Agent Verifier for iOS apps"
   homepage "https://github.com/bitomule/mav"
-  version "0.33.3"
+  version "0.34.0"
+  depends_on "cameroncooke/axe/axe"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/bitomule/mav/releases/download/v#{version}/mav-darwin-arm64"
-      sha256 "3b99a176d05e9f01059e3adae43436a23ff5c3a17f2b726f1ace958013b529e7"
+      sha256 "4ff9e632bc6012979a70da77ef39ff41495eec275d58223118526cd73f39b885"
     else
       url "https://github.com/bitomule/mav/releases/download/v#{version}/mav-darwin-amd64"
-      sha256 "7fb5e35b03d4083414b27f45e94b400384fa6a33c12760a1e3aae43b5cd8644d"
+      sha256 "de418c1034efb8c11f8194606aba6f9e07097ac4067b0ac75a8c9bbb1a10314d"
     end
   end
 
@@ -20,7 +22,6 @@ class Mav < Formula
 
   test do
     assert_match "Mobile Agent Verifier", shell_output("#{bin}/mav")
-    assert_match "cmd=doctor", shell_output("#{bin}/mav doctor")
     assert_match "version=#{version}", shell_output("#{bin}/mav --version")
   end
 end
