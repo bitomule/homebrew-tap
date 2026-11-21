@@ -1,7 +1,7 @@
 class Alondra < Formula
   desc "Task and notification bridge for Claude and Codex"
   homepage "https://github.com/bitomule/alondra"
-  version "0.3.63"
+  version "0.3.64"
   license "Elastic-2.0"
 
   depends_on macos: :tahoe
@@ -12,7 +12,7 @@ class Alondra < Formula
   skip_clean "bin/alondra", "bin/alondrad", "bin/alondrad-launcher", "libexec/alondra/sdk/alondra-host", "libexec/alondra/codex/alondra-codex-host"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "5cb8074dabeab7a6a28bb4931b92e42e0687f36588347cb7e3714d26c603af9f"
+  sha256 "b049d30ff42cbba24b7ffedb2dc3f7bf5249ab0d2bb7840544add4bef5fb0ef6"
 
   def install
     bin.install "alondra", "alondrad", "alondrad-launcher"
