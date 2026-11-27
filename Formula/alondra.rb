@@ -1,7 +1,7 @@
 class Alondra < Formula
   desc "Task and notification bridge for Claude, Codex and Antigravity"
   homepage "https://github.com/bitomule/alondra"
-  version "0.3.71"
+  version "0.3.72"
   license "Elastic-2.0"
 
   depends_on macos: :tahoe
@@ -12,7 +12,7 @@ class Alondra < Formula
             "libexec/alondra/antigravity/alondra-antigravity-host"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "6c73cb3007d5904546012356afb7d39c3bf28715754a1ed5d05f6dc2df31eb33"
+  sha256 "c1a547fcf9cd46006e94d13c2b1aa5115a2bccc208622b2edc2e901c96388fa5"
 
   def install
     bin.install "alondra", "alondrad", "alondrad-launcher", "alondra-spec"
