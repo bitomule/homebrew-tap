@@ -1,23 +1,23 @@
 class Alondra < Formula
-  desc "Task and notification bridge for Claude and Codex"
+  desc "Task and notification bridge for Claude, Codex and Antigravity"
   homepage "https://github.com/bitomule/alondra"
-  version "0.3.69"
+  version "0.3.70"
   license "Elastic-2.0"
 
   depends_on macos: :tahoe
   depends_on arch: :arm64
-  depends_on "tuicr"
 
   # Signed bytes must survive Homebrew cleaning unchanged.
-  skip_clean "bin/alondra", "bin/alondrad", "bin/alondrad-launcher", "libexec/alondra/sdk/alondra-host", "libexec/alondra/codex/alondra-codex-host"
+  skip_clean "bin/alondra", "bin/alondrad", "bin/alondrad-launcher", "bin/alondra-spec", "libexec/alondra/sdk/alondra-host", "libexec/alondra/codex/alondra-codex-host",
+            "libexec/alondra/antigravity/alondra-antigravity-host"
 
   url "https://github.com/bitomule/homebrew-tap/releases/download/alondra-v#{version}/alondra-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "7234a4525eee8a9c13d1e5363f7a81d3074ff61be356a77716f05d979f4b19ad"
+  sha256 "aa7b1f1103703f1a0e4935a89e864da318833a90ba32cb24edc981a0f8a4bf84"
 
   def install
-    bin.install "alondra", "alondrad", "alondrad-launcher"
+    bin.install "alondra", "alondrad", "alondrad-launcher", "alondra-spec"
     prefix.install "LICENSE.md", "THIRD_PARTY_NOTICES.md"
-    (libexec/"alondra").install ".claude-plugin", "plugin", "plugin-orchestrator", "sdk", "codex"
+    (libexec/"alondra").install ".claude-plugin", "plugin", "plugin-orchestrator", "sdk", "codex", "antigravity"
   end
 
   def caveats
@@ -28,5 +28,6 @@ class Alondra < Formula
 
   test do
     assert_match "Alondra", shell_output("#{bin}/alondra --help")
+    assert_match "alondra-spec", shell_output("#{bin}/alondra-spec --help")
   end
 end
